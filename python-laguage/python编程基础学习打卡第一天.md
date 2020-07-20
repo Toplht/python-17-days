@@ -147,4 +147,172 @@ print(3 ^ 5)    # 6
 运算符的优先级指的是多个运算符同时出现时，先做什么运算然后再做什么运算。
 优先级顺序基本满足：强制运算符‘ **()** ’>算术运算符>位运算符>比较运算符>身份运算符>成员运算符>逻辑运算符>赋值运算符
 > **注：幂运算符>位求反运算符、正负号>其他算术运算符，先移位运算后位运算（先位与运算）。**
-> **说明：在实际开发中，如果搞不清楚运算符的优先级，可以使用括号来确保运行的执行顺序**
+`在实际开发中，如果搞不清楚运算符的优先级，可以使用括号来确保运行的执行顺序`
+
+## 4.变量和赋值
+
+在程序设计中，变量是一种存储数据的载体。计算机中的变量是实际存在的数据或者说是存储器中存储数据的一块内存空间，变量的值可以被读取和修改，这是所有计算和控制的基础。
+- 硬性规则
+  - 变量名由字母（广义的Unicode字符，不包括特殊字符）、数字和下划线构成，数字不能开头。
+  - 大小写敏感（大写的`a`和小写的`A`是两个不同的变量）。
+  - 不要跟关键字（有特殊含义的单词，后面会讲到）和系统保留字（如函数、模块等的名字）冲突。
+- PEP 8要求：
+  - 用小写字母拼写，多个单词用下划线连接。
+  - 受保护的实例属性用单个下划线开头（后面会讲到）。
+  - 私有的实例属性用两个下划线开头（后面会讲到）。
+  
+在Python中可以使用`type`函数对变量的类型进行检查。程序设计中函数的概念跟数学上函数的概念是一致的，数学上的函数相信大家并不陌生，它包括了函数名、自变量和因变量。如果暂时不理解这个概念也不要紧，我们会在后续的章节中专门讲解函数的定义和使用。
+【例子】
+```Python
+student = "John"
+print(student)      # John
+
+a = 1
+b = 6
+c = a + b
+print(c)            # 7
+
+schoolboy = "John"
+schoolgirl = "Lily"
+allstudents = schoolboy + ' and ' + schoolgird
+print(allstudents)  # John and Lily
+
+#使用type()检查变量的类型
+
+a = 100
+b = 12.345
+c = 1 + 5j
+d = 'hello, world'
+e = True
+print(type(a))      # <class 'int'>
+print(type(b))      # <class 'float'>
+print(type(c))      # <class 'complex'>
+print(type(d))      # <class 'str'>
+print(type(e))      # <class 'bool'>
+```
+## 5.数据类型与转换
+
+计算机能处理的数据有很多种类型，除了数值之外还可以处理文本、图形、音频、视频等各种各样的数据，那么不同的数据就需要定义不同的存储类型。Python中的数据类型很多，而且也允许我们自定义新的数据类型（这一点在后面会讲到），我们先介绍几种常用的数据类型。
+类型|名称|示例
+:-:|:-:|:-:
+int|整型|-876, 10
+float|浮点型|3.149, 11.11
+bool|布尔型|True, False
+- 整型：Python中可以处理任意大小的整数（Python 2.x中有int和long两种类型的整数，但这种区分对Python来说意义不大，因此在Python 3.x中整数只有int这一种了），而且支持二进制（如***0b100***，换算成十进制是**4**）、八进制（如***0o100***，换算成十进制是**64**）、十进制（**100**）和十六进制（***0x100***，换算成十进制是***256***）的表示法。
+
+【例子】
+```python
+a = 1031
+print(bin(a))  # 0b10000000111
+```
+- 浮点型：浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的，浮点数除了数学写法（如**123.456**）之外还支持科学计数法（如**1.23456e2**）。
+
+【例子】
+```pytohn
+a = 0.00000023
+b = 2.3e-7
+print(a)  # 2.3e-07
+print(b)  # 2.3e-07
+```
+有时候我们想保留浮点型的小数点后 **n** 位。可以用 **decimal** 包里的 **Decimal** 对象和 **getcontext()** 方法来实现。
+【例子】
+```pytohn
+import decimal
+from decimal import Decimal
+
+b = Decimal(1) / Decimal(3)
+print(b)        # 0.3333333333333333333333333333
+
+
+#使 1/3 保留 4 位，用 getcontext().prec 来调整精度。
+
+decimal.getcontext().prec = 4
+c = Decimal(1) / Decimal(3)
+print(c)        ## 0.3333
+
+```
+- 布尔型：布尔值只有**True**、**False**两种值，当把布尔型变量用在数字运算中，用 1 和 0 代表 True 和 False。在Python中，可以直接用**True**、**False**表示布尔值（请注意大小写），也可以通过布尔运算计算出来（例如**3 < 5**会产生布尔值**True**，而**2 == 1**会产生布尔值**False**）。
+
+【例子】
+```python
+print(True + True)  # 2
+print(True + False)  # 1
+print(True * False)  # 0
+
+#bool()为python中的函数类似于type()
+
+print(type(0), bool(0), bool(1))    # <class 'int'> False True
+
+#bool()作用在容器类型变量：X 只要不是空的变量，bool(X) 就是 True，其余就是 False。
+
+print(type(''), bool(''), bool('python'))     # <class 'str'> False True
+print(type([]), bool([]), bool([1, 2]))       # <class 'list'> False True
+```
+> 确定bool(X) 的值是 True 还是 False，就看 X 是不是空，空的话就是 False，不空的话就是 True。
+对于数值变量，0, 0.0 都可认为是空的。
+对于容器变量，里面没元素就是空的。
+- 字符串型：字符串是以单引号或双引号括起来的任意文本，比如'hello'和"hello",字符串还有原始字符串表示法、字节字符串表示法、Unicode字符串表示法，而且可以书写成多行的形式（用三个单引号或三个双引号开头，三个单引号或三个双引号结尾）。
+
+- 类型转换
+
+转换为整型 int(x, base=10)
+转换为字符串 str(object='')
+转换为浮点型 float(x)
+【例子】
+```python
+print(int('520'))  # 520
+print(int(520.52))  # 520
+print(float('520.52'))  # 520.52
+print(float(520))  # 520.0
+print(str(10 + 10))  # 20
+print(str(10.1 + 5.2))  # 15.3
+```
+## 6.print()函数
+
+print() 函数是Python中的基本输出函数，用来把数据按指定格式输出到标准工具台或指定的文件对象。
+
+内置函数print()的语法格式为：
+
+`print(value, sep=' ', end='\n', file=sys.stdout, flush=False)`
+- 数据以字符串表示的方式格式化输出到流文件对象file里。其中所有非关键字参数都按str()方式进行转换为字符串输出；
+- 关键字参数sep是实现分隔符，比如多个参数输出时想要输出中间的分隔字符；
+- 关键字参数end是输出结束时的字符，默认是换行符\n；
+- 关键字参数file是定义流输出的文件，可以是标准的系统输出sys.stdout，也可以重定义为别的文件；
+- 关键字参数flush是立即把内容输出到流文件，不作缓存。
+
+【例子】
+```python
+# 默认每次输出后都会换行
+shoplist = ['apple', 'mango', 'carrot', 'banana']
+print("This is printed without 'end'and 'sep'.")
+for item in shoplist:
+    print(item)
+
+# This is printed without 'end'and 'sep'.
+# apple
+# mango
+# carrot
+# banana
+
+#每次输出结束都用end设置的参数&结尾，并没有默认换行。
+shoplist = ['apple', 'mango', 'carrot', 'banana']
+print("This is printed with 'end='&''.")
+for item in shoplist:
+    print(item, end='&')
+print('hello world')
+
+# This is printed with 'end='&''.
+# apple&mango&carrot&banana&hello world
+
+#item值与'another string'两个值之间用sep设置的参数&分割。由于end参数没有设置，因此默认是输出解释后换行，即end参数的默认值为\n。
+
+shoplist = ['apple', 'mango', 'carrot', 'banana']
+print("This is printed with 'sep='&''.")
+for item in shoplist:
+    print(item, 'another string', sep='&')
+
+# This is printed with 'sep='&''.
+# apple&another string
+# mango&another string
+# carrot&another string
+# banana&another string
