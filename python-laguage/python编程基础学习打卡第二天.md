@@ -59,17 +59,128 @@ else:
 
 【例子】
 ```python
-#猜数字游戏
-
-from random import randint
-number = int(input("请输入数字："))
-answer = randint(0,100)
-if number > answer:
-    print("大了点")
-elif number <answer:
-    print("小了点")
-elif 0 < abs(number - answer) < 10:
-    print("很接近了！")
+score = float(input('请输入成绩: '))
+if score >= 90:
+    grade = 'A'
+elif score >= 80:
+    grade = 'B'
+elif score >= 70:
+    grade = 'C'
+elif score >= 60:
+    grade = 'D'
 else:
-    print("恭喜你答对了！")
+    grade = 'E'
+print('对应的等级是:', grade)
+```
+
+- 选择结构的嵌套
+
+选择结构可以通过嵌套来实现复杂的业务逻辑，语法如下：
+```python
+if 表达式 1:
+    result1
+    if 表达式 2:
+        result2
+    else:
+        result3
+else:
+    if 表达式 4：
+        result4
+```
+> 注：使用嵌套选择结构时，一定要严格控制好不同级别代码块的缩进量
+
+- assert关键词
+
+assert 这个关键词我们称之为断言，当关键词后边的条件结果为 False 时，程序自动崩溃并抛出AssertionError异常。
+【例子】
+```python
+assert 1 < 0   # AssertionError
+```
+
+##  循环结构
+
+Python主要有for循环和while循坏两种形式的循环结构，多个循环可以嵌套使用，并且还经常和选择结构嵌套使用来实现复杂的业务逻辑。
+
+- While循环结构
+
+完整语法形式如下：
+
+```python
+while 条件表达式:
+    需要被重复执行的语句
+```
+> `while` 循环直到条件表达式的值为 `False` 才会跳出循环执行后面的语句。**当条件表达式为0时不执行循环（0 == False）**。
+【例子】
+'''pyhton
+#计算1+2+3+……+100的结果
+
+sum = i =0
+while i <= 100:
+    sum+=1
+    i+=1
+print(sum)          # 5050
+'''
+- while - else 循环
+
+如果循环因为条件表达式不成立或序列遍历结结束且是自然结束时则执行else结构的语句。
+```python
+while 条件表达式:
+    需要被重复执行的语句
+else:
+    result
+```
+> 如果while循环执行了break函数，将不再执行else中代码块的内容。
+【例子】
+```python
+sum = i =0
+while i <= 100:
+    sum+=1
+    i+=1
+else:
+    print(sum)          # 5050
+```
+> ** `while` 循环一般用于循环次数不确定的情况**
+- for循环结构
+
+for循环一般用于循环次数确定的情况，**尤其适用于枚举或遍历序列或迭代对象中的元素**。
+```python
+for 迭代变量 in 可迭代对象:
+    代码块
+```
+> 每次循环，迭代变量被设置为可迭代对象的当前元素，提供给代码块使用。
+【例子】
+```python
+for i in [1,2,3]:
+    print(i)
+
+# 1
+# 2
+# 3
+```
+- for - else 循环
+
+```python
+for 迭代变量 in 可迭代对象:
+    代码块
+else:
+    代码块
+```
+> 同 `while` 语句一样，正常退出循环时则执行。
+
+- range（）函数
+    - range(101)可以产生一个0到100的整数序列。
+    - range(1, 100)可以产生一个1到99的整数序列。
+    - range(1, 100, 2)可以产生一个1到99的奇数序列，其中2是步长，即数值序列的增量。
+
+- break语句与continue语句
+
+`break` 和 `continue` 语句在 while 和 for 循环中都可以使用且一般与选择结构或异常处理结构结合使用，`break`语句执行后将提前结束所属层次循环。`continue` 语句的作用是提前结束本次循环，忽略`continue`之后的所有语句，提前进入下一次循环。
+
+## 练习题
+
+1.编写一个Python程序来查找那些既可以被7整除又可以被5整除的数字，介于1500和2700之间。
+```python
+for i in range(1500,2701):
+    if (i % 5 == 0) & (i % 7 == 0):
+         print(i)
 ```
