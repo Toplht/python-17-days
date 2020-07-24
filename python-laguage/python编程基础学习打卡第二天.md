@@ -92,6 +92,7 @@ else:
 - assert关键词
 
 assert 这个关键词我们称之为断言，当关键词后边的条件结果为 False 时，程序自动崩溃并抛出AssertionError异常。
+
 【例子】
 ```python
 assert 1 < 0   # AssertionError
