@@ -7,4 +7,4 @@
 ## [第七次打卡](https://github.com/Toplht/python-17-days/blob/master/python-laguage/python%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E4%B9%8B%E7%B1%BB%E3%80%81%E5%AF%B9%E8%B1%A1%E4%B8%8E%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95.md)
 ## [第八次打卡](https://github.com/Toplht/python-17-days/blob/master/python-laguage/python%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%BF%E7%94%A8.md)
 ## [第九次打卡](https://github.com/Toplht/python-17-days/blob/master/python-laguage/python%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%96%87%E4%BB%B6%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.md)
-## [数据分析入门](https://nbviewer.jupyter.org/github.com/Toplht/python-17-days/blob/master/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%BA%94%E5%91%A8%E4%BD%9C%E4%B8%9A.ipynb)
+## [数据分析入门](https://nbviewer.jupyter.org/github/Toplht/python-17-days/blob/master/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%85%A5%E9%97%A8/%E7%AC%AC%E4%BA%94%E5%91%A8%E4%BD%9C%E4%B8%9A.ipynb)
